@@ -1,0 +1,43 @@
+// Default
+.input-text__container
+  position: relative
+  display: flex
+  justify-content: space-between
+  align-items: center
+  border-bottom: 1px solid $black
+  padding: 4px 8px
+
+.input-text__label
+  position: absolute
+  left: 0
+  padding-left: 8px
+  color: black
+  pointer-events: none
+  transition: 0.2s ease
+
+.input-text
+  width: 100%
+  border: none
+
+  &:focus
+    outline: none
+
+    & + .input-text__label
+      top: 0
+      transform: translateY(-100%)
+      font-size: 10px
+      opacity: 0.5
+      padding-left: 0
+
+.input-text__add-icon
+  padding: 2px
+  border-radius: 2px
+  transition: 0.2s ease
+  margin-left: 4px
+
+// Small
+.input-text--small
+  width: 100px
+
+.input-text__label--small
+  font-size: 11px

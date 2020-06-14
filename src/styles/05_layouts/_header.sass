@@ -1,0 +1,42 @@
+// Default
+.header
+  width: 100%
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  background-color: $black
+  padding: 30px 0
+  border-radius: 4px
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25)
+
+.header-filler
+  width: 100%
+  
+
+.header__settings-container
+  position: absolute
+  top: 0
+  right: 0
+  display: flex
+  justify-content: center
+  align-items: cneter
+  background-color: $white
+  padding: 6px
+  border: 2px solid $black
+  border-radius: 0 4px 0 12px
+  cursor: pointer
+
+  &:hover .header__settings-icon
+    animation: infiniteRotate 4s infinite linear
+
+@keyframes infiniteRotate
+  0%
+    transform: rotate(0)
+  100%
+    transform: rotate(360deg)
+
+// Settings opened
+.header.open
+  height: 400px

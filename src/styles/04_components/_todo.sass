@@ -1,0 +1,74 @@
+// Default
+.todo__item
+  position: relative
+  width: 100%
+  height: 40px
+  border: 1px solid $black
+  border-radius: 4px
+  margin-bottom: 8px
+  box-sizing: border-box
+  display: flex
+  align-items: center
+  cursor: pointer
+  overflow: hidden
+
+  .check-btn
+    width: 0
+
+  .check-btn__icon
+    opacity: 0
+
+.todo__name
+  width: calc( 100% - 32px )
+  height: 100%
+  display: flex
+  align-items: center
+  padding-left: 16px
+
+.todo__more
+  position: absolute
+  top: 0
+  left: calc( 100% - 16px )
+  height: 100%
+  display: flex
+  transition: 0.3s ease
+  z-index: 10
+
+// Labelled
+.todo__item.labelled
+
+  .todo__name
+    background-color: $green-light
+
+// Checked
+.todo__item.done
+
+  .todo__name
+    text-decoration: line-through
+
+  .check-btn
+    width: 24px
+    background-color: $black
+
+    .check-btn__icon path
+      fill: $white
+
+  .check-btn__icon
+    opacity: 1
+
+// Check hover
+.todo__item.labelled:hover, .todo__item:hover
+
+  .check-btn
+    width: 24px
+
+  .check-btn__icon
+    opacity: 1
+
+// More hover
+.todo__more:hover
+  left: calc( 100% - (24px * 3) )
+
+  .more-btn
+    width: 0
+    opacity: 0
