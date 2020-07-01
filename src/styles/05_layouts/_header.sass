@@ -13,7 +13,6 @@
 
 .header-filler
   width: 100%
-  
 
 .header__settings-container
   position: absolute
@@ -31,11 +30,25 @@
   &:hover .header__settings-icon
     animation: infiniteRotate 4s infinite linear
 
+.header__time
+  text-transform: uppercase
+
+  > span
+    animation: flashing 1s infinite
+
 @keyframes infiniteRotate
   0%
     transform: rotate(0)
   100%
     transform: rotate(360deg)
+
+@keyframes flashing
+  49%
+    opacity: 1
+  50%
+    opacity: 0
+  100%
+    opacity: 0
 
 // Settings opened
 .header.open

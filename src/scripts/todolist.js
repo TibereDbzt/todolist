@@ -6,17 +6,20 @@ const ENTER_KEY = 13;
 
 export default class TodoList {
   constructor () {
-    this.tasks = [];
+    this.tasks = this.storeOrRetrieveTodoList();
     this.taskTemplate = require('./../templates/task.handlebars');
     manageInputText('.input-text', 'grabbed');
+    this.manageTime();
+    this.renderTimeAndDate();
     this.initElements();
     this.initEvents();
+    this.renderTasks();
   }
 
   initElements () {
-    this.$inputTask = $('.js-input_add_task');
+    this.$inputTask = $('.js-input_task');
     this.$todoList = $('.js-todolist');
-    this.$inputLabel = $('.js-input_add_label');
+    this.$inputLabel = $('.js-input_label');
     this.$labelsList = $('.js-labels_list');
   }
 
@@ -29,9 +32,18 @@ export default class TodoList {
       if (e.which === 13) {
         const labelName = this.inputLabel.val();
         this.addLabel(labelName);
-        this.inputLabel.val('');
+        this.$inputLabel.val('');
       }
     });
+  }
+
+  storeOrRetrieveTodoList (todolist) {
+    if (arguments.length) {
+      localStorage.setItem('todolist', JSON.stringify(todolist));
+    } else {
+      const stored = JSON.parse(localStorage.getItem('todolist'));
+      return stored || [];
+    }
   }
 
   createTask (e) {
@@ -50,10 +62,11 @@ export default class TodoList {
     this.render();
   }
 
-  render () {
+  renderTasks () {
     const tasks = [...this.tasks];
     const rendered = this.taskTemplate(tasks);
     this.$todoList.html(rendered);
+    this.storeOrRetrieveTodoList(tasks);
   }
 
   toggleTask (e) {
@@ -61,11 +74,12 @@ export default class TodoList {
     const task = this.tasks[i];
     task.completed = !task.completed;
     $(e.target.closest('.js-task')).toggleClass('completed');
+    this.renderTasks();
   }
 
   deleteTask (e) {
     this.tasks.splice(this.getIndexOfTask(e.target), 1);
-    this.render();
+    this.renderTasks();
   }
 
   getIndexOfTask (el) {
@@ -76,6 +90,25 @@ export default class TodoList {
         return i;
       }
     }
+  }
+
+  manageTime () {
+    let start_minute = new Date().getMinutes();
+    setInterval( () => {
+      const current_minute = new Date().getMinutes();
+      if (current_minute > start_minute) {
+        start_minute = current_minute;
+        this.renderTimeAndDate();
+      }
+    }, 1000);
+  }
+
+  renderTimeAndDate() {
+    const time = new Date().toLocaleTimeString('en-GB', {hour: 'numeric', minute: '2-digit', hour: '2-digit', hour12: true});
+    const date = new Date().toLocaleDateString('en-GB', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
+    let split_time = String(time).split(':');
+    $('.js-time').html(`${split_time[0]}<span>:</span>${split_time[1]}`);
+    $('.js-date').html(date);
   }
 
   // addLabel (name) {
