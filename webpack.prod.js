@@ -9,17 +9,17 @@ const PATHS = {
     dist: path.join(__dirname, '/dist'),
 };
 
-new webpack.EnvironmentPlugin(['NODE_ENV']);
+//new webpack.EnvironmentPlugin(['NODE_ENV']);
 
 let config = {
 
     mode: 'production',
 
-    entry: './src/scripts/main.js',
+    entry: './src/scripts/app.js',
 
     output: {
       path: PATHS.dist,
-      filename: 'scripts/main.js',
+      filename: 'scripts/todolist.js',
     },
 
     module: {
@@ -55,21 +55,21 @@ let config = {
                     }
                 }, 'sass-loader']
             },
-            // {
-      //   test: /\.(jpe?g|png|gif|svg)$/,
-      //   loader: 'url-loader',
-      //   options: {
-      //     limit: 10 * 1024
-      //   }
-      // },
-      // {
-      //   test: /\.svg$/,
-      //   loader: 'svg-url-loader',
-      //   options: {
-      //     limit: 10 * 1024,
-      //     noquotes: true,
-      //   }
-      // },
+            {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 800 * 1024
+        }
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-url-loader',
+        options: {
+          limit: 10 * 1024,
+          noquotes: true,
+        }
+      },
       {
         test: /\.(gif|png|jpg|jpeg|svg)$/i,
         use: [{
@@ -103,7 +103,10 @@ let config = {
           }
         ]
       },
-        ]
+      {
+        test: /\.handlebars$/, loader: "handlebars-loader"
+      },
+      ]
     },
 
     plugins: [

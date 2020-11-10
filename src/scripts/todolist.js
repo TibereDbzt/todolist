@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'jquery-ui-bundle';
 import { generateID } from './helpers/generateID';
 import { manageInputText } from './helpers/manageInputText';
 
@@ -24,17 +25,40 @@ export default class TodoList {
   }
 
   initEvents () {
+    this.$todoList.sortable({
+      update: (event, ui) => {
+        this.orderTasks(event, ui);
+      }
+    });
     this.$inputTask.on('keyup', this.createTask.bind(this));
     this.$todoList
       .on('click', '.js-task_name', this.toggleTask.bind(this))
-      .on('click', '.js-delete_btn', this.deleteTask.bind(this));
-    this.$inputLabel.keypress( (e) => {
+      .on('click', '.js-delete_btn', this.deleteTask.bind(this))
+      .on('click', '.js-edit_btn', this.editTask.bind(this));
+    this.$inputLabel.on('keypress', (e) => {
       if (e.which === 13) {
         const labelName = this.inputLabel.val();
         this.addLabel(labelName);
         this.$inputLabel.val('');
       }
     });
+  }
+
+  orderTasks (e, ui) {
+    // $('.js-task').each( (i, elem) => {
+    //   const index = this.getIndexOfTask(elem);
+    //   const position = { positon: $('.js-task').index(elem) };
+    //   $.extend(this.tasks[index], position);
+    // });
+    let tasks_id = [];
+    $('.js-task').each( (i, elem) => {
+      tasks_id.push($(elem).data('id'));
+    });
+    console.log(tasks_id.indexOf(this.tasks[0].id));
+    console.log(this.tasks);
+    // console.log(typeof this.tasks[0].position);
+    this.tasks.sort((a, b) => console.log(tasks_id.indexOf(a.id)));
+    console.log(this.tasks);
   }
 
   storeOrRetrieveTodoList (todolist) {
@@ -59,7 +83,7 @@ export default class TodoList {
     });
     $input.val('');
     console.log(this.tasks);
-    this.render();
+    this.renderTasks();
   }
 
   renderTasks () {
@@ -92,6 +116,10 @@ export default class TodoList {
     }
   }
 
+  editTask(task) {
+    console.log(task);
+  }
+
   manageTime () {
     let start_minute = new Date().getMinutes();
     setInterval( () => {
@@ -103,8 +131,8 @@ export default class TodoList {
     }, 1000);
   }
 
-  renderTimeAndDate() {
-    const time = new Date().toLocaleTimeString('en-GB', {hour: 'numeric', minute: '2-digit', hour: '2-digit', hour12: true});
+  renderTimeAndDate () {
+    const time = new Date().toLocaleTimeString('en-GB', {minute: '2-digit', hour: '2-digit', hour12: true});
     const date = new Date().toLocaleDateString('en-GB', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
     let split_time = String(time).split(':');
     $('.js-time').html(`${split_time[0]}<span>:</span>${split_time[1]}`);

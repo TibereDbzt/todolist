@@ -3,6 +3,7 @@
   position: relative
   width: 100%
   height: 40px
+  background-color: white
   border: 1px solid $black
   border-radius: 4px
   margin-bottom: 8px
@@ -14,6 +15,7 @@
 
   .check-btn
     width: 0
+    pointer-events: none
 
   .check-btn__icon
     opacity: 0
@@ -24,6 +26,11 @@
   display: flex
   align-items: center
   padding-left: 16px
+  border: none
+  pointer-events: none
+
+  &:focus
+    outline: none
 
 .todo__more
   position: absolute
@@ -40,7 +47,7 @@
     background-color: $green-light
 
 // Checked
-.todo__item.completed
+.todo__item.complete
 
   .todo__name
     text-decoration: line-through
@@ -66,8 +73,15 @@
 
 // More hover
 .todo__more:hover
-  left: calc( 100% - (24px * 3) )
+  left: calc( 100% - (32px * 2) )
 
   .more-btn
     width: 0
     opacity: 0
+
+// Sortable items
+.sortable-ghost
+  opacity: 0.5
+
+.sortable-drag
+  opacity: 0

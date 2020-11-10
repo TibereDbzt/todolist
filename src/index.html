@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Home | TodoList</title>
 </head>
@@ -32,13 +32,13 @@
                     </div>
                </div>
                <div class="todo">
-                    <div class="input-text__container">
-                         <input class="input-text js-input_task" type="text" name="Add label">
+                    <form class="input-text__container js-form_task">
+                         <input class="input-text js-input_task" type="text" maxlength="41" name="Add label">
                          <label class="input-text__label" for="add-label">Add task</label>
                          <svg class="input-text__add-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M9.08333 4.41666H5.58333V0.916664H4.41666V4.41666H0.916664V5.58333H4.41666V9.08333H5.58333V5.58333H9.08333V4.41666Z" fill="black"/>
                          </svg>
-                    </div>
+                    </form>
                     <ul class="todo__list js-todolist">
                     </ul>
                </div>

@@ -49,6 +49,8 @@
     "handlebars": "^4.7.6",
     "handlebars-loader": "^1.7.1",
     "jquery": "^3.5.0",
-    "normalize.css": "^8.0.1"
+    "jquery-ui-bundle": "^1.12.1-migrate",
+    "normalize.css": "^8.0.1",
+    "sortablejs": "^1.12.0"
   }
 }

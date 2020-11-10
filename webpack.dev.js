@@ -11,11 +11,11 @@ let config = {
 
   mode: 'development',
 
-  entry: './src/scripts/main.js',
+  entry: './src/scripts/app.js',
 
   output: {
     path: PATHS.dist,
-    filename: 'scripts/main.js'
+    filename: 'scripts/app.js'
   },
 
   module: {

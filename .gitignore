@@ -6,3 +6,4 @@
 .cache
 .eslintcache
 package-lock.json
+./src/scripts/todolist.js
