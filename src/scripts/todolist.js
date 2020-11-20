@@ -149,21 +149,21 @@ export default class TodoList {
   //   }
   // }
 
-  // displayError (error) {
-  //   const template = require('./../templates/error.handlebars');
-  //   let alert = {name: '', message: ''};
-  //   switch (error) {
-  //     case 'miss-task_name':
-  //       alert.name = 'No task name !';
-  //       alert.message = 'Please name your task before adding it to the TodoList.';
-  //     case 'miss-label_name':
-  //       alert.name = 'No label name !';
-  //       alert.message = 'Please name your label before adding it to the list.';
-  //   }
-  //   alert = template(alert);
-  //   $('body').append(alert);
-  //   $('.error').delay(3500).fadeOut(1000, () => {
-  //     $('.error').remove();
-  //   });
-  // }
+  displayError (error) {
+    const template = require('./../templates/error.handlebars');
+    let alert = {name: '', message: ''};
+    switch (error) {
+      case 'miss-task_name':
+        alert.name = 'No task name !';
+        alert.message = 'Please name your task before adding it to the TodoList.';
+      case 'miss-label_name':
+        alert.name = 'No label name !';
+        alert.message = 'Please name your label before adding it to the list.';
+    }
+    alert = template(alert);
+    $('body').append(alert);
+    $('.error').delay(3500).fadeOut(1000, () => {
+      $('.error').remove();
+    });
+  }
 }
