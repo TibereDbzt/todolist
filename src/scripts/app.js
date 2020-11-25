@@ -1,4 +1,3 @@
-/* eslint-disable */
 import '../styles/main.sass';
 import Controller from './controller'
 import Model from './model';

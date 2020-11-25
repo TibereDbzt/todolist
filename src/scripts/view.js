@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { Sortable } from 'sortablejs';
 import { focusLastChar } from './helpers/focusLastChar';
 import { manageInputText } from './helpers/manageInputText';
@@ -35,7 +33,7 @@ export default class View {
     // Trigger when minute has changed. Render time and date.
     renderTimeAndDate () {
         const time = new Date().toLocaleTimeString('en-GB', {minute: '2-digit', hour: '2-digit', hour12: true});
-        const date = new Date().toLocaleDateString('en-GB', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
+        const date = new Date().toLocaleDateString('en-GB', {weekday: 'long', month: 'long', day: 'numeric'});
         const split_time = String(time).split(':');
         this.time.innerHTML = `${split_time[0]}<span>:</span>${split_time[1]}`;
         this.date.innerHTML = date;

@@ -4,7 +4,8 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>Home | TodoList</title>
+     <link rel="icon" href="./assets/images/checked_icon.ico" type="image/icon type">
+     <title>TodoList</title>
 <link href="main.css" rel="stylesheet"></head>
 <body>
      <main class="wrapper">
@@ -15,25 +16,13 @@
                     </svg>
                </button>
                <h1 class="header__time js-time">10:44 PM</h1>
-               <h2 class="header__date js-date">Tuesday, 24 May 2020</h2>
+               <h2 class="header__date js-date" id="date">Tuesday, 24 May 2020</h2>
           </header>
           <div class="header__filler"></div>
           <div class="todolist">
-               <div class="labels js-labels_list">
-                    <button class="labels__item">work</button>
-                    <button class="labels__item">learn</button>
-                    <button class="labels__item">explore</button>
-                    <div class="input-text__container">
-                         <input class="input-text input-text--small js-input_label" type="text" name="Add label">
-                         <label class="input-text__label input-text__label--small" for="add-label">Add label</label>
-                         <svg class="input-text__add-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M9.08333 4.41666H5.58333V0.916664H4.41666V4.41666H0.916664V5.58333H4.41666V9.08333H5.58333V5.58333H9.08333V4.41666Z" fill="black"/>
-                         </svg>
-                    </div>
-               </div>
                <div class="todo">
                     <form class="input-text__container js-form_task">
-                         <input class="input-text js-input_task" type="text" maxlength="41" name="Add label">
+                         <input autocomplete="off" class="input-text js-input_task" autofocus type="text" maxlength="41" name="Add label">
                          <label class="input-text__label" for="add-label">Add task</label>
                          <svg class="input-text__add-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M9.08333 4.41666H5.58333V0.916664H4.41666V4.41666H0.916664V5.58333H4.41666V9.08333H5.58333V5.58333H9.08333V4.41666Z" fill="black"/>
@@ -48,6 +37,8 @@
      <footer class="footer">
           <p class="footer__author">Made with &hearts; by Tibère Debizet</p>
      </footer>
+
+     <div class="alerts__container js-alerts_container"></div>
 
 <script type="text/javascript" src="scripts/todolist.js"></script></body>
 </html>

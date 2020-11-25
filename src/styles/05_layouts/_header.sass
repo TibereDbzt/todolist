@@ -32,9 +32,13 @@
 
 .header__time
   text-transform: uppercase
+  text-align: center
 
   > span
     animation: flashing 1s infinite
+
+.header__date
+  text-align: center
 
 @keyframes infiniteRotate
   0%
@@ -53,3 +57,11 @@
 // Settings opened
 .header.open
   height: 400px
+
+@media screen and ( max-width: 420px )
+  .header__time
+    font-size: 50px
+
+  .header__date
+    font-size: 20px
+  

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const { generateID } = require("./helpers/generateID");
 
 export default class Model {
@@ -11,11 +9,6 @@ export default class Model {
     // BINDING METHODS : binds a data or time change
     // ==================================================
 
-    // Callback passed by controller on init. Called when data in the model have changed
-    bindListChanged (callback) {
-        this.onListChanged = callback;
-    }
-
     // Test if minute has changed. If so, call the onTimeChanged method of the controller.
     bindTimeChanged (callback) {
         let start_minute = new Date().getMinutes();
@@ -26,6 +19,11 @@ export default class Model {
                 callback();
             }
         }, 1000);
+    }
+    
+    // Callback passed by controller on init. Called when data in the model have changed
+    bindListChanged (callback) {
+        this.onListChanged = callback;
     }
 
     // =================================================
