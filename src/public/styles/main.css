@@ -2,7 +2,7 @@
     font-family: Cascadia;
     font-style: normal;
     font-weight: 400;
-    src: local("Cascadia-Code"), local("Cascadia"), url(assets/fonts/Cascadia.ttf)
+    src: local("Cascadia-Code"), local("Cascadia"), url(../fonts/Cascadia.ttf)
 }
 
 :root {
